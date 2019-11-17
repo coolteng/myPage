@@ -34,7 +34,7 @@ blockquote {
 
 #header-container {
 	height: 90px;
-	background: url(../images/header-bg.png) repeat-x left bottom;
+	background: url(../../myPage/images/header-bg.png) repeat-x left bottom;
 }
 
 #header {
@@ -94,7 +94,7 @@ blockquote {
 
 #content {
 	float: left;
-	width: 575px; /*¤º®e­­©w¼e«×*/
+	width: 575px; /*Â¤ÂºÂ®eÂ­Â­Â©wÂ¼eÂ«Ã—*/
 }
 
 
@@ -123,7 +123,7 @@ width: 165px;
 
 .categorylinks{
 list-style-type: disk;
-list-style-image: url(../images/Heart.png);
+list-style-image: url(../../myPage/images/Heart.png);
 margin: 5px auto 10px 18px;
 padding: 0;
 
@@ -195,7 +195,7 @@ font-weight: bold;
 
 #footer-container {
 	height: 40px;
-	background: url(../images/footer-bg.png) repeat-x left bottom;
+	background: url(../../myPage/images/footer-bg.png) repeat-x left bottom;
 }
 
 #footer {
