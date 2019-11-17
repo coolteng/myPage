@@ -1,0 +1,356 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><TITLE>Learn about Robot Inverse Kinematics</TITLE>
+<META content="text/html; charset=UTF-8" http-equiv=Content-Type>
+<META name=description content="This site has a bunch of information about robots and robotics.">
+<META name=keywords content="robot robots robotics inverse kinematics">
+<META name=ROBOTS content=INDEX,FOLLOW>
+<META name=GENERATOR content="MSHTML 8.00.6001.19170">
+<link href="../css/lar.css" rel="stylesheet" type="text/css" />
+</HEAD>
+<BODY>
+
+<TABLE border=1 cellSpacing=0 borderColor=#000000 borderColorLight=#000000 
+                                                                                    borderColorDark=#000000 cellPadding=0 width=800>
+  <TBODY>
+  <TR><TD width="100%">
+<div>
+      <P align=center>
+      <IMG border=0  alt="Learn about Robots and Robotics" src="../gif/topBar.gif" width=808 height=202>
+      </P>
+</div>
+</TD></TR>
+  <TR>
+    <TD width="100%">&nbsp; 
+      <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD height=10 width="100%" colSpan=4>
+            <H1 align=center>Robot Kinematics</H1></TD></TR>
+<TR>
+          <TD width="2%"></TD>
+          <TD width="96%">
+            <P>Robot Kinematics studies the motion of bodies without consideration of the forces or
+moments that cause the motion. Robot kinematics refers the analytical study of
+the motion of a robot manipulator. Formulating the suitable kinematics models
+for a robot mechanism is very crucial for analyzing the behaviour of industrial
+manipulators.</P>
+<P class=writing align=center>
+<IMG border=0  src="../gif/kinematics.GIF">
+</P>
+
+<P>The robot kinematics can be divided into <strong>forward kinematics</strong> and <strong>inverse
+kinematics</strong>.  Inverse kinematics is a much more difficult problem
+than forward kinematics. 
+</P>
+          </TD>
+</TR>
+        <TR>
+          <TD height=10 width="100%" colSpan=4>
+<hr>
+            <H1 align=center>Robot Forward Kinematics</H1></TD></TR>
+
+<TR>
+          <TD width="2%"></TD>
+          <TD width="96%">
+            <P>Forward kinematics problem is straightforward and there is no
+complexity deriving the equations. Hence, there is always a forward kinematics
+solution of a manipulator.</P>
+          </TD>
+</TR>
+        <TR>
+          <TD height=10 width="100%" colSpan=4>
+<hr>
+            <H1 align=center>Robot Inverse Kinematics</H1></TD></TR>
+        <TR>
+
+          <TD width="2%"></TD>
+          <TD width="96%">
+            <P>We've seen the <A 
+            href="http://www.learnaboutrobots.com/forwardKinematics.htm" target="_blank">forward 
+            kinematics</A> problem. The inverse kinematics problem is much more 
+            interesting and its solution is more useful. At the position level, 
+            the problem is stated as, "Given the desired position of the robot's 
+            hand, what must be the angles at all of the robots joints?" The solution of the inverse kinematics problem
+is computationally expansive and generally takes a very long time in the real
+time control of manipulators. Singularities and nonlinearities that make the problem more difficult to solve.</P>
+            <P>Humans solve this problem all the time without even thinking 
+            about it. When you are eating your cereal in the morning you just 
+            reach out and grab your spoon. You don't think, "my shoulder needs 
+            to do this, my elbow needs to do that, etc." 
+</P>
+
+<p>
+<h3><strong>Single link Robot Arm</strong></h3>
+</p><P>
+Below we will look at 
+            how most robots have to solve the problem. We will start with a very 
+            simple example.</P>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD width="100%">
+
+                  <P align=center><IMG border=0 
+                  src="../gif/planar1DOF.gif" 
+                  width=235 height=175></P></TD></TR>
+              <TR>
+                <TD width="100%"></TD></TR>
+              <TR>
+                <TD width="100%">
+                  <P class=writing>The figure above is a schematic of a simple 
+                  robot lying in the X-Y plane. The robot has one link of length 
+                  l and one joint with angle Ø.&nbsp; The position of the 
+                  robot's hand is X<SUB>hand</SUB>. The inverse kinematics 
+                  problem (at the position level) for this robot is as follows: 
+                  Given X<SUB>hand</SUB> what is the joint angle Ø? We'll start 
+                  the solution to this problem by writing down the forward 
+                  position equation, and then solve for Ø.</P></TD></TR>
+
+              <TR>
+                <TD height=10 width="100%">
+                  <P class=writing></P></TD></TR>
+              <TR>
+                <TD width="100%">
+                  <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD width="20%"></TD>
+
+                      <TD class=writing width="80%">X<SUB>hand</SUB> = 
+                        lcosØ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; (forward position 
+                        solution)</TD></TR>
+                    <TR>
+                      <TD width="20%"></TD>
+                      <TD class=writing width="80%">cosØ = 
+                      X<SUB>hand</SUB>/l</TD></TR>
+
+                    <TR>
+                      <TD width="20%"></TD>
+                      <TD class=writing width="80%">Ø = 
+                        cos<SUP>-1</SUP>(X<SUB>hand</SUB>/l)</TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD height=10 width="100%"></TD></TR>
+              <TR>
+
+                <TD height=10 width="100%">
+                  <P class=writing>To finish the solution let's say that this 
+                  robot's link has a length of 1 foot and we want the robot's 
+                  hand to be at X = .7071 feet. That gives:</P></TD></TR>
+              <TR>
+                <TD height=10 width="100%"></TD></TR></TBODY></TABLE>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD width="20%"></TD>
+
+                <TD width="80%">
+                  <P class=writing>Ø = cos<SUP>-1</SUP>(.7071) = +/- 45 
+                  degrees</P></TD></TR></TBODY></TABLE>
+            <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD height=10 width="100%"></TD></TR>
+              <TR>
+
+                <TD class=writing height=10 width="100%">
+                  <P class=writing>Even for this simple example, there are two 
+                  solutions to the inverse kinematics problem: one at plus 45 
+                  degrees and one at minus 45 degrees! The existence of multiple 
+                  solutions adds to the challenge of the inverse kinematics 
+                  problem. Typically we will need to know which of the solutions 
+                  is correct. All programming languages that I know of supply a 
+                  trigonometric function called ATan2 that will find the proper 
+                  quadrant when given both the X and Y arguments: Ø = 
+                  ATan2(Y/X). Now we have the tools we need to look at a more 
+                  interesting inverse kinematics problem:</P>
+
+<p><h3><strong>Two-link Robot Arm</strong></h3></p>
+ <P class=writing align=center><IMG border=0 
+                  src="../gif/planarSCARA.gif" 
+                  width=414 height=255></P>
+                  <P class=writing align=left>You may have to use your 
+                  imagination a bit, but the schematic above is the planar part 
+                  of the 2-link robot we discuss in the <A 
+                  href="http://www.learnaboutrobots.com/industrial.htm" target="_blank">industrial 
+                  robots</A> section. Here's the statement of the inverse 
+                  kinematics problem at the position level for this 
+              robot:</P></TD></TR>
+              <TR>
+                <TD class=writing height=5 width="100%"></TD></TR>
+
+              <TR>
+                <TD class=writing height=10 width="100%">
+                  <TABLE border=0 cellSpacing=0 cellPadding=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD width="21%"></TD>
+                      <TD class=writing width="79%">Given: X<SUB>hand</SUB>, 
+                        Y<SUB>hand</SUB>, Ø<SUB>hand</SUB></TD></TR>
+
+                    <TR>
+                      <TD width="21%"></TD>
+                      <TD class=writing width="79%">Find: Ø<SUB>1</SUB>, 
+                        Ø<SUB>2</SUB> and&nbsp; Ø<SUB>3</SUB></TD></TR>
+                    <TR>
+
+                      <TD width="21%"></TD>
+                      <TD class=writing width="79%"></TD></TR>
+                    <TR>
+                      <TD width="100%" colSpan=2>
+                        <P class=writing>To aid in solving this problem, I am 
+                        going to define an imaginary straight line that extends 
+                        from the robot's first joint to its last joint as 
+                        follows:</P></TD></TR>
+                    <TR>
+                      <TD height=5 width="21%"></TD>
+                      <TD class=writing height=5 width="79%"></TD></TR>
+
+                    <TR>
+                      <TD width="21%"></TD>
+                      <TD class=writing width="79%">B: length of imaginary 
+                      line</TD></TR>
+                    <TR>
+                      <TD width="21%"></TD>
+                      <TD class=writing width="79%">q<SUB>1</SUB>: angle 
+                        between X-axis and imaginary line</TD></TR>
+                    <TR>
+
+                      <TD width="21%"></TD>
+                      <TD class=writing width="79%">q<SUB>2</SUB>: interior 
+                        angle between imaginary line and link 
+l<SUB>1</SUB></TD></TR>
+                    <TR>
+                      <TD height=5 width="21%"></TD>
+                      <TD height=5 width="79%"></TD></TR>
+                    <TR>
+                      <TD class=writing width="21%">Then we have:</TD>
+
+                      <TD class=writing width="79%"></TD></TR>
+                    <TR>
+                      <TD height=5 width="21%"></TD>
+                      <TD height=5 width="79%"></TD></TR>
+                    <TR>
+                      <TD class=writing width="21%"></TD>
+                      <TD class=writing width="79%">
+                        <P class=writing>B<SUP>2</SUP> = 
+                        X<SUB>hand</SUB><SUP>2</SUP> + 
+                        Y<SUB>hand</SUB><SUP>2</SUP>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        (by the Pythagorean theorem)</P></TD></TR>
+
+                    <TR>
+                      <TD class=writing width="21%"></TD>
+                      <TD class=writing width="79%">q<SUB>1</SUB> = 
+                        ATan2(Y<SUB>hand</SUB>/X<SUB>hand</SUB>)</TD></TR>
+                    <TR>
+                      <TD class=writing width="21%"></TD>
+                      <TD class=writing width="79%">q<SUB>2</SUB> = 
+                        acos[(l<SUB>1</SUB><SUP>2</SUP> - 
+                        l<SUB>2</SUB><SUP>2</SUP> + 
+                        B<SUP>2</SUP>)/2l<SUB>1</SUB>B]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        (by the law of cosines)</TD></TR>
+
+                    <TR>
+                      <TD class=writing width="21%"></TD>
+                      <TD class=writing width="79%">Ø<SUB>1</SUB> = 
+                        q<SUB>1</SUB> + 
+                        q<SUB>2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</SUB> 
+                        (I know you can handle addition)</TD></TR>
+                    <TR>
+
+                      <TD class=writing width="21%"></TD>
+                      <TD class=writing width="79%">Ø<SUB>2</SUB> = 
+                        acos[(l<SUB>1</SUB><SUP>2</SUP> + 
+                        l<SUB>2</SUB><SUP>2</SUP> - 
+                        B<SUP>2</SUP>)/2l<SUB>1</SUB>l<SUB>2</SUB>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        (by the law of cosines)</TD></TR>
+
+                    <TR>
+                      <TD class=writing width="21%"></TD>
+                      <TD class=writing width="79%">Ø<SUB>3</SUB> = 
+                        Ø<SUB>hand</SUB> - Ø<SUB>1</SUB> - 
+                    Ø<SUB>2</SUB></TD></TR></TBODY></TABLE></TD></TR>
+
+              <TR>
+                <TD class=writing height=10 width="100%"></TD></TR>
+              <TR>
+                <TD class=writing height=10 width="100%">
+<P>
+That completes the 
+                  solution for Ø<SUB>1</SUB>, Ø<SUB>2</SUB> and&nbsp; 
+                  Ø<SUB>3</SUB> given X<SUB>hand</SUB>, Y<SUB>hand</SUB>, 
+                  Ø<SUB>hand</SUB>. Most inverse kinematics solutions at the 
+                  position level proceed in a similar fashion. You will use your 
+                  knowledge of trigonometry and geometry coupled with your 
+                  creativity to devise a solution. The solution given above 
+                  works as is for 2 link robots.
+</P>
+
+<p><h3><strong>Three-link Robot Arm</strong></h3></p>
+<P class=writing align=center><IMG border=0  src="../gif/robot_arm_FBD.png" width=414 height=255></P>
+<P>
+ If you can imagine turning the 
+                  3 link robot on its side, then you will see that the solution 
+                  above also works for the positioning components of most six 
+                  degree of freedom industrial robots too. The inverse 
+                  kinematics solution for Cartesian robots is trivial as all 
+                  axes are perpendicular by definition and thus there is no 
+                  coupling of the motions.
+</P>
+<p>
+Web:<a href="http://www.mathworks.com/products/fuzzy-logic/demos.html?file=/products/demos/shipping/fuzzy/invkine_codepad.html" target="_blank">Modeling Inverse Kinematics in a Robotic Arm</a>
+</p>
+
+<p><h3><strong>6 DOF Robot Arm: Serial_arm v.s. Parallel_arm</strong></h3></p>
+<IMG border=0  src="../gif/robot-arm.jpg">
+<IMG border=0  src="../gif/m_aquilon detoure.png">
+</P>
+<P>
+</P>
+<p>
+Web:<a href="http://www.robotshop.com/robot-arm.html" target="_blank">Robot Arm Torque Calculator</a>
+</p>
+
+<p><h3><strong>6 DOF Robot Arm: LEGO</strong></h3></p>
+This is a robot arm with 6 degrees of freedom. The design challenge was to get
+such a heavy design implemented. The torques are quite high, but it works well.
+<P>
+<IMG src="../gif/robot1.gif" width=380 height=274>
+<IMG src="../gif/robot2.gif" width=380 height=274>
+<BR>
+I used two Lego micromotors in the hand, for wrist and gripper motions. 
+<p>
+Web: <a href="http://staff.science.uva.nl/~leo/lego/robotarm.html" target="_blank">leo at science.uva.nl</a> 
+</p>
+
+<p><h3><strong>12 DOF Hexapod</strong></h3></p>
+<P class=writing align=center><IMG border=0  src="../gif/mh201.jpg"></P>
+<P>This is a hexapod with 2 DOF per leg.
+</P>
+<p>
+Web: <a href="http://www.lynxmotion.com/c-3-hexapods.aspx" target="_blank">Lynxmotion - Hexapods</a>
+</p>
+
+<p><h3><strong>18 DOF Hexapod</strong></h3></p>
+<P class=writing align=center><IMG border=0  src="../gif/t-hex_with_his_brother_and_sister.jpg"></P>
+<P>Left is a hexapod with 4 DOF per leg. Middle is a hexapod with 3 DOF per leg. Right hexapod is a 18 DOF robot.
+</P>
+<p>
+Web: <a href="http://www.hexapodrobot.com/forum/viewtopic.php?f=5&t=405" target="_blank">24 DOF Hexapod</a>
+</p>
+</TD></TR>
+
+              <TR>
+                <TD height=10 width="100%"></TD></TR></TBODY></TABLE></TD>
+
+          <TD width="2%"></TD></TR>
+        <TR>
+          <TD height=10 width="100%" colSpan=4>
+            <P align=center></P></TD></TR>
+        <TR>
+          <TD height=10 width="100%" colSpan=4>
+            <P align=center><i>&copy;Copyright 2012</i> </P></TD></TR>
+
+<TR>
+          <TD height=10 width="100%"  colSpan=4></TD>
+</TR>
+</TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

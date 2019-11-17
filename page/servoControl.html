@@ -1,0 +1,394 @@
+﻿<html style="background: none repeat scroll 0% 0% transparent; min-width: 0pt;">
+<head>
+<link href="../css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+<!--
+
+H3 {
+	font-family: Tahoma, Arial, Geneva, sans-serif;
+	padding-left: 0.3em;
+                border-left: 1em solid #ff3300;
+                border-bottom: 1px solid #ff3300;
+}
+
+#header-wrap {
+                font: 65% Arial, Helvetica, sans-serif;
+                background-color: #333333;	
+}
+
+body {
+	font:  100% Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin: 0;
+	padding: 0;
+	background: #ffffff;
+}
+
+-->
+</style>
+</head>
+<body>
+<a name="servo"></a>
+<div id="header-wrap">
+<div id="header-container">
+<div id="header">
+<h1>伺服馬達與控制原理介紹</h1>
+<ul>
+	<li><a href="#servo">伺服馬達介紹</a></li>
+	<li><a href="#ppm">信號概要</a></li>
+	<li><a href="#wire">接線圖</a></li>
+	<li><a href="#atmega328">微晶片控制</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="container">
+<h3 align="left">伺服馬達（Servo Motor）介紹</h3>
+<p>伺服馬達（Servo Motor）依其用途要求概分為<strong>工業用伺服馬達</strong>與<strong>一般RC伺服馬達</strong>。 </p>
+<div id="content">
+<p><b>工業用伺服馬達:</b></p>
+<ul>
+<li>操作要求扭力、精度、速度、耐操穩固、信號回授等等</li>
+<li>可以有氣壓、油壓、或是電力驅動的方式呈現</li>
+<li>直流伺服馬達、永磁交流伺服馬達、感應交流伺服馬達</li>
+<li>控制器的功能在於扭矩控制、速度控制、與位置控制等</li>
+<li>伺服驅動器(servo driver)包含有控制器與功率放大器</li>
+<li>伺服馬達內的光電編碼器提供解析度回授信號給控制器</li>
+</ul>
+</div>
+<div id="sidebar">
+<img src="../gif/MAC800_servo_motor.jpg" border="0" width="225" height="200">
+</div>
+<br>
+
+<div id="content">
+<p><b>一般RC伺服馬達(RADIO CONTROL SERVO MOTOR):</b></p>
+<ul>
+<li>為遙控模型世界以及多數小型機器人之最主要的致動器</li>
+<li>體積小、重量輕並可提供精確的旋轉角度與足夠的扭力</li>
+<li>RC伺服馬達大部份是透過 PWM(脈波寬度調變)來控制</li>
+<li>行無回授之信號控制，不同於工業用之閉迴路控制系統</li>
+<li>注意伺服馬達最好要使用獨立電源 (4.5V~6V均可)供電</li>
+</ul>
+</div>
+<div id="sidebar">
+<img src="../gif/futm0031.jpg" border="0" width="205" height="250">
+</div><br>
+</div>
+<!-- End container -->
+<div>
+<b>機器人結構裡許許多多的伺服馬達:</b>
+<br>
+<img src="../gif/example3.png" border="0">
+</div>
+<br>
+<div>
+<b>掀起伺服馬達的神秘面紗:</b>
+<P>
+<IMG border=0  src="../gif/jr_ds362_servo_a1.jpg" width="225" height="200">
+<IMG border=0  src="../gif/images.jpeg" width="225" height="200">
+</P>
+<b>RC伺服馬達實體拆解開來的各式零配件:</b>
+<img src="../gif/MotorServo_despiece.jpeg" border="0">
+<br>
+</div>
+
+<a name="ppm" />
+<h3 align="left">信號概要</h3>
+<div>
+<b>RC伺服馬達各種信號配線樣式:</b>
+<p>每個輸出接頭只有3個接點，也就是VCC、Signal、GNG三個腳位</p>
+<p>這三個接點，各廠牌的順序大都一樣，但有時接線的顏色不一樣</p>
+<img src="../gif/rc-servos22.gif" border="0">
+</div><br>
+
+
+<b>遙控世界信號傳遞:</b>
+<div>
+<img src="../gif/txrx.jpg" border="0">
+</div><br>
+
+
+<b>combines 6 PWM servo signals into a PPM stream.</b>
+<br>
+<div>
+<img src="../gif/rc_receiver_timing_diagram.jpg" border="0">
+</div><br>
+
+
+<b>數位信號轉類比信號:</b>
+<div>
+<img src="../gif/sound_01.jpg" border="0">
+</div><br>
+
+<b>類比信號 v.s. 數位信號</strong></b>
+<div>
+<IMG src="../gif/Waves.png" width=580 height=370>
+</div><br>
+
+<b>RC伺服馬達如何接受PPM(Pulse Position Modulation)信號控制轉角變化:</b>
+<div>
+<img src="../gif/MotorServo_posiciones.gif" border="0">
+</div><br>
+
+<h3 align="left">PWM</h3>
+<div><span style="font-family: courier new,monospace; font-size: medium;">
+<b>PWM（Pulse Width Modulation，脈波寬度調變）訊號波形圖:</b>
+<br>
+<p>固定週期不同duty cycle的PWM波形</p>
+<img src="../gif/article-new-intro-modal-ehow-images-a05-f7-hh-create-module-run-motor-servo-800x800.jpg" border="0">
+</div>
+
+
+<b>PPM v.s. PWM:</b>
+<div>
+<img src="../gif/pwm_basics.jpg" border="0">
+</div><br>
+
+<a name="wire" />
+<h3 align="left">控制接線介紹</h3>
+
+<b>伺服馬達連結八腳微晶片硬體控制接線圖</b>
+<div>
+<img src="../gif/servo-motor-plugblock.png" border="0">
+</div><br>
+
+<b>Arduino硬體控制伺服馬達連接圖:</b>
+<div>
+<img src="../gif/Arduino_Servo_1_thumb.png" border="0" width="605" height="360">
+</div><br>
+
+
+<b>Arduino硬體控制伺服馬達示意圖:</b>
+<br>
+<div><span style="font-family: courier new,monospace; font-size: medium;">
+<img src="../gif/connection.jpg" border="0" width="605" height="360">
+</div><br>
+
+
+
+<a name="atmega328" />
+<h3 align="left">微晶片控制PWM原理概要</h3>
+<b><span dir="ltr">PWM On The ATmega328</span></a></b>
+<div><span style="font-family: courier new,monospace; font-size: medium;">
+<b>THEORY OF OPERATION:</b></span>
+</div>
+
+<div><br></div>
+<div>
+<div style="display: block; text-align: left;"><br>
+<div style="display: block; text-align: left;"><a href="http://sites.google.com/site/qeewiki/books/avr-guide/pwm-on-the-atmega328/ATmega328 - PWM.JPG?attredirects=0" target="_blank"><img src="../gif/ATmega328-PWM.JPG" border="0"></a>
+</div>
+</div>
+</div>
+
+<div><i>Figure 1: ATmega168/328 PWM Pins</i></div>
+<div><br>
+<div><b><font face="'courier new', monospace" size="3">TIMER1 (16BIT PWM):</font></b></div>
+<div><br></div>
+<div>
+<div style="display: block; text-align: left;">
+<a href="http://sites.google.com/site/qeewiki/books/avr-guide/pwm-atmega8/PWM - 16 Bit - ATmega8.JPG?attredirects=0" style="color: rgb(0, 0, 204); text-decoration: none; border-bottom-style: none;" target="_blank"><img src="../gif/PWM-16Bit-ATmega8.JPG" style="border-style: solid; border-width: 1px; padding: 7px;" border="0"></a></div>
+<i>Figure 3: ATmega328 Timer1 (16bit)</i></div><div><br></div><div><br></div><div><span>&nbsp;&nbsp;
+ &nbsp;Timer/Counter1 has 2 outputs, OC1A and OC1B. &nbsp;Since both of these 
+outputs run off the same timer and waveform generators both OC1A and 
+OC1B are&nbsp;synchronized, this make the timer perfect for making tank 
+robots (I love tank robots).</span><br></div><div><br></div><div><span>&nbsp;&nbsp; &nbsp;</span>Timer/Counter1
+ is capable of running in 3 modes the Fast PWM mode, the Phase Corrected
+ PWM mode and, Phase and Frequency Corrected mode. &nbsp;Each of these modes 
+can be inverted or none-inverted. &nbsp;Just like Timer/Counter0 
+Timer/Counter1 has several options for controlling the TOP value of the 
+PWM unlike Timer/Counter0 however, the TOP value can be fixed, stored in
+ the OCR1A register or the&nbsp;ICR1 register (see table below).</div><div><br></div><div><br></div><div><div><div><span><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;"><b>TCCR1A</b></td><td style="vertical-align: top; text-align: center;">COM1A1</td><td style="vertical-align: top; text-align: center;">COM1A0</td>
+<td style="vertical-align: top; text-align: center;">COM1B1</td><td style="vertical-align: top; text-align: center;">COM1B0</td><td style="vertical-align: top; text-align: center;">-</td><td style="vertical-align: top; text-align: center;">
+&nbsp;-</td><td style="vertical-align: top; text-align: center;">&nbsp;WGM11</td><td style="vertical-align: top; text-align: center;">WGM10&nbsp;</td></tr></tbody></table><div style="text-align: left;"><i>Timer/Counter Control Register 1 A</i></div>
+</span></div><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;"><div><br></div></blockquote></div><div><div><br></div><div><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;"><div>
+<div><table style="margin: 0px; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0"><tbody><tr><td style="vertical-align: top; width: 50px; min-height: 15px;"><b>COM1A1<br>COM1B1</b></td>
+<td style="vertical-align: top; width: 50px; min-height: 15px;"><b>COM1A0<br>COM1B0</b></td><td style="vertical-align: top; width: 431px; min-height: 15px;"><b>&nbsp;<br>&nbsp;DESCRIPTION</b></td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">
+0</td><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: left; width: 431px; min-height: 15px;">&nbsp;Normal port operation, OC1A/OC1B disconnected.</td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">
+0</td><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">1&nbsp;</td><td style="vertical-align: top; text-align: left; width: 431px; min-height: 15px;">&nbsp;Mode 9,11,14,15 only: Enable OCR1A only (OC1B disconnected)</td>
+</tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">1</td><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: left; width: 431px; min-height: 15px;">
+&nbsp;None-inverted mode (HIGH at bottom, LOW on Match)</td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">1</td><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">1&nbsp;</td>
+<td style="vertical-align: top; text-align: left; width: 431px; min-height: 15px;">&nbsp;Inverted mode (LOW at bottom, HIGH on Match)</td></tr></tbody></table></div></div></blockquote><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;">
+<div><div><i>Applies only to PWM modes</i></div></div></blockquote></div><div><br></div><div><br></div><div><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;"><b>TCCR1B</b></td><td style="vertical-align: top; text-align: center;"><font color="#666666">ICNC1</font></td><td style="vertical-align: top; text-align: center;">
+<font color="#666666">ICES1</font></td><td style="vertical-align: top; text-align: center;">-</td><td style="vertical-align: top; text-align: center;">WGM13</td><td style="vertical-align: top; text-align: center;">WGM12</td><td style="vertical-align: top; text-align: center;">
+&nbsp;CS12</td><td style="vertical-align: top; text-align: center;">&nbsp;CS11</td><td style="vertical-align: top; text-align: center;">CS10&nbsp;</td></tr></tbody></table><div style="text-align: left;"><i>Timer/Counter Control Register 1 B</i></div>
+</div><div><br></div><div><br></div><div><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;"><div><table style="margin: 0px; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; width: 54px; min-height: 15px;"><b>&nbsp;CS12</b></td><td style="vertical-align: top; width: 54px; min-height: 15px;"><b>&nbsp;CS11&nbsp;</b></td><td style="vertical-align: top; width: 54px; min-height: 15px;"><b>&nbsp;CS10&nbsp;</b></td>
+<td style="vertical-align: top; width: 365px; min-height: 15px;"><b>&nbsp;DESCRIPTION</b></td></tr><tr><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;">0</td><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;">
+0&nbsp;</td><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: left; width: 365px; min-height: 15px;">&nbsp;Timer/Counter2 Disabled&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;">
+0</td><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;">1&nbsp;</td><td style="vertical-align: top; text-align: left; width: 365px; min-height: 15px;">
+&nbsp;No Prescaling</td></tr><tr><td style="vertical-align: top; text-align: center;">0</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top;">
+&nbsp;Clock / 8</td></tr><tr><td style="vertical-align: top; text-align: center;">0</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top;">
+&nbsp;Clock / 64</td></tr><tr><td style="vertical-align: top; text-align: center;">1</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top;">
+&nbsp;Clock / 256</td></tr><tr><td style="vertical-align: top; text-align: center;">1</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top;">
+&nbsp;Clock / 1024</td></tr><tr><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;"><font color="#999999">1</font></td><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;"><font color="#999999">1&nbsp;</font></td>
+<td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;"><font color="#999999">0&nbsp;</font></td><td style="vertical-align: top; text-align: left; width: 365px; min-height: 15px;"><font color="#999999">&nbsp;External clock source on T1 pin, Clock on Falling edge</font></td>
+</tr><tr><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;"><font color="#999999">1</font></td><td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;"><font color="#999999">1&nbsp;</font></td>
+<td style="vertical-align: top; text-align: center; width: 54px; min-height: 15px;"><font color="#999999">1&nbsp;</font></td><td style="vertical-align: top; text-align: left; width: 365px; min-height: 15px;"><font color="#999999">&nbsp;External clock source on T1 pin, Clock on rising edge</font></td>
+</tr></tbody></table><i>CS bits</i></div><div><i><br></i></div></blockquote></div><div><br></div><div><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;"><div><div><table style="margin: 0px; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; width: 50px; min-height: 15px;"><b>&nbsp;MODE</b></td><td style="vertical-align: top; width: 58px; min-height: 15px;"><b>WGM13</b></td><td style="vertical-align: top; width: 56px; min-height: 15px;"><b>WGM12</b></td>
+<td style="vertical-align: top; width: 53px; min-height: 15px;"><b>WGM11</b></td><td style="vertical-align: top; width: 53px; min-height: 15px;"><b>WGM10</b></td><td style="vertical-align: top; width: 267px; min-height: 15px;"><b>&nbsp;DESCRIPTION</b></td>
+<td style="vertical-align: top; width: 60px;">&nbsp;<b>TOP</b></td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;"><font color="#999999">0</font></td><td style="vertical-align: top; text-align: center; width: 58px; min-height: 15px;">
+<font color="#999999">0</font></td><td style="vertical-align: top; text-align: center; width: 56px; min-height: 15px;"><font color="#999999">0&nbsp;</font></td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;"><font color="#999999">0&nbsp;</font></td>
+<td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;"><font color="#999999">0&nbsp;</font></td><td style="vertical-align: top; text-align: left; width: 267px; min-height: 15px;"><font color="#999999">&nbsp;Normal&nbsp;</font></td>
+<td style="vertical-align: top; width: 60px;">&nbsp;<font color="#666666">0xFFFF</font></td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">1</td><td style="vertical-align: top; text-align: center; width: 58px; min-height: 15px;">
+0</td><td style="vertical-align: top; text-align: center; width: 56px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;">
+1&nbsp;</td><td style="vertical-align: top; text-align: left; width: 267px; min-height: 15px;">&nbsp;PWM, Phase Corrected, 8bit</td><td style="vertical-align: top; width: 60px;">&nbsp;0x00FF</td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">
+2</td><td style="vertical-align: top; text-align: center; width: 58px; min-height: 15px;">0</td><td style="vertical-align: top; text-align: center; width: 56px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;">
+1&nbsp;</td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;">0&nbsp;</td><td style="vertical-align: top; text-align: left; width: 267px; min-height: 15px;">&nbsp;PWM, Phase Corrected, 9bit</td><td style="vertical-align: top; width: 60px;">
+&nbsp;0x01FF</td></tr><tr><td style="vertical-align: top; text-align: center; width: 50px; min-height: 15px;">3</td><td style="vertical-align: top; text-align: center; width: 58px; min-height: 15px;">0</td><td style="vertical-align: top; text-align: center; width: 56px; min-height: 15px;">
+0</td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;">1&nbsp;</td><td style="vertical-align: top; text-align: center; width: 53px; min-height: 15px;">1&nbsp;</td><td style="vertical-align: top; text-align: left; width: 267px; min-height: 15px;">
+&nbsp;PWM, Phase Corrected, 10bit&nbsp;</td><td style="vertical-align: top; text-align: center; width: 60px;">0x03FF&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">5</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td>
+<td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;Fast PWM, 8bit&nbsp;</td>
+<td style="vertical-align: top; text-align: center;">0x00FF&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">6</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">
+1&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;Fast PWM, 9bit&nbsp;</td><td style="vertical-align: top; text-align: center;">
+0x01FF&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">7</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">
+1</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;Fast PWM, 10bit&nbsp;</td><td style="vertical-align: top; text-align: center;">0x03FF&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">
+8</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">
+0&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;PWM, Phase and Frequency Corrected&nbsp;</td><td style="vertical-align: top; text-align: center;">ICR1&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">9</td><td style="vertical-align: top; text-align: center;">
+1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: left;">
+&nbsp;PWM, Phase and Frequency Corrected&nbsp;</td><td style="vertical-align: top; text-align: center;">OCR1A&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">10</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td>
+<td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;PWM, Phase Correct&nbsp;</td>
+<td style="vertical-align: top; text-align: center;">ICR1&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">11</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">
+0&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;PWM, Phase Correct&nbsp;</td><td style="vertical-align: top; text-align: center;">
+&nbsp;OCR1A</td></tr><tr><td style="vertical-align: top; text-align: center;">14</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">
+1&nbsp;</td><td style="vertical-align: top; text-align: center;">0&nbsp;</td><td style="vertical-align: top; text-align: left;">&nbsp;Fast PWM&nbsp;</td><td style="vertical-align: top; text-align: center;">ICR1&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center;">
+15</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">1&nbsp;</td><td style="vertical-align: top; text-align: center;">
+1</td><td style="vertical-align: top;">&nbsp;Fast PWM</td><td style="vertical-align: top; text-align: center;">OCR1A&nbsp;</td></tr></tbody></table></div></div></blockquote><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;">
+<div><div><i>Waveform Generator Mode bits (Abbreviated)</i></div></div></blockquote></div><div><br></div><div><br></div><div><div><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;"><b>TCCR1C</b></td><td style="vertical-align: top; text-align: center;">&nbsp;<font color="#666666">FOC1A</font></td><td style="vertical-align: top; text-align: center;">
+<font color="#666666">FOC1B&nbsp;</font></td><td style="vertical-align: top; text-align: center;">-</td><td style="vertical-align: top; text-align: center;">-</td><td style="vertical-align: top; text-align: center;">-</td><td style="vertical-align: top; text-align: center;">
+-</td><td style="vertical-align: top; text-align: center;">-</td><td style="vertical-align: top; text-align: center;">&nbsp;</td></tr></tbody></table><div style="text-align: left;"><i>Timer/Counter Control Register C</i></div></div></div>
+<div><i><br></i></div><div><br></div><div><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0"><tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">
+&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;">
+&nbsp;<b>TIMSK1</b></td><td style="vertical-align: top; text-align: center;"><font color="#666666">-</font></td><td style="vertical-align: top; text-align: center;"><font color="#666666">-&nbsp;</font></td><td style="vertical-align: top; text-align: center;">
+<font color="#666666">ICIE1&nbsp;</font></td><td style="vertical-align: top; text-align: center;"><font color="#666666">-&nbsp;</font></td><td style="vertical-align: top; text-align: center;"><font color="#666666">-&nbsp;</font></td><td style="vertical-align: top; text-align: center;">
+&nbsp;OCIE1B</td><td style="vertical-align: top; text-align: center;"><font color="#666666">&nbsp;</font>OCIE1A</td><td style="vertical-align: top; text-align: center;">TOIE1&nbsp;</td></tr></tbody></table><div style="text-align: left;"><i>Timer/Counter Interrupt Mask Register</i></div>
+</div><div style="text-align: left;"><i><br></i></div><div style="text-align: left;"><i><br></i></div><div style="text-align: left;"><i><span style="font-style: normal;"><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;">&nbsp;<b>TIFR</b></td><td style="vertical-align: top; text-align: center;">&nbsp;<font color="#666666">OCF2</font></td><td style="vertical-align: top; text-align: center;">
+<font color="#666666">TOV2</font><font color="#666666">&nbsp;</font></td><td style="vertical-align: top; text-align: center;">ICF1&nbsp;</td><td style="vertical-align: top; text-align: center;">OCF1A&nbsp;</td><td style="vertical-align: top; text-align: center;">
+OCF1B&nbsp;</td><td style="vertical-align: top; text-align: center;"><font color="#666666">&nbsp;</font>TOV1</td><td style="vertical-align: top; text-align: center;"><font color="#666666">&nbsp;-</font></td><td style="vertical-align: top; text-align: center;">
+<font color="#999999">TOV0</font>&nbsp;</td></tr></tbody></table><div style="text-align: left;"><i>Timer/Counter Interrupt Flag Register</i></div></span></i></div><div><br></div><div><br></div><div><i><span style="font-style: normal;"><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;"><b>TCNT1H</b></td><td style="vertical-align: top; text-align: center;">&nbsp;</td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;">
+<br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;">
+<br></td><td style="vertical-align: top; text-align: center;">&nbsp;</td></tr><tr><td style="vertical-align: top;">&nbsp;<b>TCNT1L</b></td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">
+&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td></tr></tbody></table><div style="text-align: left;">
+<i>Timer/Counter Register (stores the counter value, 16 bit)</i></div><div><i><br></i></div><div><i><br></i></div></span></i></div></div><div><i><span style="font-style: normal;"><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;"><b>OCR1AH</b></td><td style="vertical-align: top; text-align: center;">&nbsp;</td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;">
+<br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;">
+<br></td><td style="vertical-align: top; text-align: center;">&nbsp;</td></tr><tr><td style="vertical-align: top;"><b>OCR1AL</b></td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">
+&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td></tr></tbody></table><div style="text-align: left;">
+<i>Output Compare Register A (stores the compare value, 16 bit)</i></div></span></i></div></div><div><br></div><div><br></div><div><i><span style="font-style: normal;"><table style="margin: 0px; text-align: center; border-collapse: collapse; border-color: rgb(136, 136, 136); border-width: 1px;" border="1" cellspacing="0">
+<tbody><tr><td style="vertical-align: top; text-align: center; width: 59px; min-height: 15px;">&nbsp;</td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;7 bit</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;6 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;5 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;4 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;3 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;2 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;"><b>&nbsp;1 bit&nbsp;</b></td><td style="vertical-align: top; text-align: center; width: 59px;">
+<b>&nbsp;0 bit</b>&nbsp;</td></tr><tr><td style="vertical-align: top; text-align: center; min-height: 15px;"><b>OCR1BH</b></td><td style="vertical-align: top; text-align: center;">&nbsp;</td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;">
+<br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;"><br></td><td style="vertical-align: top; text-align: center;">
+<br></td><td style="vertical-align: top; text-align: center;">&nbsp;</td></tr><tr><td style="vertical-align: top;"><b>OCR1BL</b></td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">
+&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td><td style="vertical-align: top;">&nbsp;</td></tr></tbody></table><div style="text-align: left;">
+<i>Output Compare Register B (stores the compare value, 16 bit)</i></div></span></i></div><br></div><div><br></div><div><span>&nbsp;&nbsp;
+ &nbsp;When you take a square wave, its on for a while and off for a while. 
+&nbsp;If we divide the on by the off and multiply by 100% we will get what is
+ called a duty cycle.</span><br></div><div><span><br></span></div><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;"><span style="color: rgb(0, 0, 255);">Duty_Cycle = [</span><span style="color: rgb(0, 0, 255);">ON_time / (ON_time + OFF_time) ] * 100&nbsp;</span></blockquote>
+<div><span><br></span></div><div><span><span>&nbsp;&nbsp;
+ &nbsp;So if we are on for 1ms and then off for 1ms we will end up with a 50%
+ duty cycle; &nbsp;If we are on for 1ms and off for 3ms we end up with a 25% 
+duty cycle.</span><br></span></div><div><span><span><br></span></span></div><blockquote style="margin: 0px 0px 0px 40px; border-style: none; padding: 0px;"><span style="color: rgb(0, 0, 255);">Output_Voltage =&nbsp;</span><span style="color: rgb(0, 0, 255);">Duty_Cycle * Input_Voltage</span><div>
+<span><span><br></span></span></div></blockquote><span>&nbsp;&nbsp;
+ &nbsp;Now if we take our duty cycle and multiply it by our voltage we will 
+get the output voltage. &nbsp;So if we have a 5V power supply and we activate
+ a PWM on a 25% duty cycle we will make an analog device behave as if it
+ was&nbsp;receiving&nbsp;a 1.25V signal.&nbsp;</span>Cool eh!?
+<div><br></div>
+<div><span>&nbsp;&nbsp;
+ &nbsp;Much like the counter functions PWM can be simulated in software 
+however, the hardware version is&nbsp;preferred&nbsp;because it just sort of does 
+its own thing and, with very little coding you can get a constant square
+ wave going.</span></div>
+<div><br></div>
+<div><span>&nbsp;&nbsp; &nbsp;Remember the 
+Prescaler? well its back in the PWM. &nbsp;And much like in the counter, its 
+roll is to slow things down. &nbsp;This is good because it allows us to run 
+the PWM at different frequencies. &nbsp;This is important because some 
+devices are sensitive to PWM speeds. &nbsp;A motor for example will get hot 
+if the PWM waveform is too fast, and will jitter if the PWM is too slow.
+ &nbsp;Since I already planted the question in your head, the answer is start
+ at 10kHz. &nbsp;Different motors like different frequencies but 10kHz will 
+get you into the ball park.</span></div>
+<div><br></div>
+<div><span><span>&nbsp;&nbsp; &nbsp;The ATmega168/328 has 6(!!!) PWM outputs, 2 are located on each timer/counter.</span><br></span></div><
+div><br></div>
+<div><span>&nbsp;&nbsp; &nbsp;As always, the output pin has the same limitations as any output (see the&nbsp;<a href="http://sites.google.com/site/qeewiki/books/avr-guide/digital-outputs" style="color: rgb(0, 0, 204); text-decoration: none;" target="_blank">Digital Output Chapter</a>&nbsp;for details).</span><br>
+</div>
+<div><br></div>
+<span><span><span><span>&nbsp;&nbsp;
+ &nbsp;The AVR's PWM timer is capable of running in 3 different modes: Fast 
+PWM, Phase Corrected PWM and Phase and Frequency Phase Corrected PWM. </span></span></span></span><p><b><br></b></p><p><b>The AVR Fast PWM Mode</b></p>
+<p>The AVR fast PWM mode could generate the most high frequency PWM 
+waveform compared to the other two PWM modes (i.e. Phase Correct or 
+Phase and Frequency Correct mode). This PWM mode simply uses the TIMER 
+counter register (<b>TCNTn</b>, where n represent the TIMER 0, TIMER1, and TIMER2 respectively) incremental value which is start from <b>0×00</b> (BOTTOM) to 0xFF (8-bit TOP) or <b>0xFFFF</b> (16-bit TOP).</p>
+
+<p>When the TIMER counter register  reach the output compare register  (<b>OCRnA</b> or <b>OCRnB</b>) value  then the wave generator circuit will CLEAR (logical low) the output compare bit channel (<b>OCnA</b> or <b>OCnB</b>).
+  When the TIMER counter register value reach the TOP value then it will
+ SET (logical high) the output compare bit channel and the whole process
+ will repeat again from BOTTOM. This PWM generation process could be 
+shown on this following diagram:</p>
+<p><a href="http://www.ermicro.com/blog/wp-content/uploads/2011/05/avr_pwm_03.jpg" target="_blank"><img title="avr_pwm_03" src="../gif/avr_pwm_03.jpg" alt="" height="449" width="580"></a></p>
+
+<p>As shown on the diagram above, the behavior of output compare bit channel (<b>OCnA</b> or <b>OCnB</b>)
+ output could be set to non-inverting (CLEAR  and SET) or inverting (SET
+ and CLEAR) mode by setting the compare match channel bit (<b>COMnA1</b>, <b>COMnA0</b>, <b>COMnB1</b>, and <b>COMnB0</b>) on Timer/Counter register A (<b>TCCRnA</b>). The Fast PWM mode could be set by setting the wave generation mode bit (<b>WGM01</b> and <b>WGM00</b>) on Timer/Counter register A (<b>TCCRnA</b>) and <b>WGM02</b> bit on <b>TCCRnB</b> register. When the TIMER counter register (<b>TCNTn</b>) equal to Output Compare Register (<b>OCRnA</b> or <b>OCRnB</b>) it will generate the Output Compare interrupt and when the <b>TCNTn</b> register reach TOP it will generate the TIMER overflow interrupt (<b>TOV</b>).</p>
+<p>We will use the simplest timer, TIMER1 for PWM generation. So we have an 9 bit counter counting from 0 to 511 and then resetting to 0 and so on.<br></p>
+<p>若令COM1A1、COM1A0、COM1B1、<wbr>COM1B0四個位元皆為零，則表示：Normal port operation, OC1A/OC1B disconnected，也就是說，<wbr>完全關閉了硬體PWM輸出功能，<wbr>如此就得改用指定一般的輸出入腳當作軟體PWM輸出，此時，<wbr>該指定輸出PWM腳的信號控制，<wbr>則要靠設計者完全用軟体實作出來。那麼，能夠運用的事件就是 Compare match Interrupt 與 Overflow interrupt。<wbr>前者當該事件發生時就要送出高位準信號到指定輸出PWM腳，<wbr>接者當溢位事件發生時就要送出低位準信號到指定輸出PWM腳，<wbr>如此週而復始地輸出 Servo 控制信號。<br>
+<br></p>
+<p>此ATmega328微晶片處於 16 MHz 運作時最大能耐之韌體調整伺服馬達位置的精確度約可達 0.1 度（180°/1800 steps，1mSec/1800=0.56uSec），但馬達實際角度切換位置會受馬達內部控制機制及齒輪影響。<br></p>
+
+<p>純硬體控制PWM時序與信號輸出，程式碼用的最少效率最佳，但會受限於硬體PWM信號輸出引腳，無法做任何管理支配動作</p>
+<p>硬體控制PWM時序結合中斷觸發輸出信號，可善加利用一般輸出埠當PWM信號輸出</p>
+<p>軟體控制PWM時序結合中斷觸發輸出信號，</p>
+<p>純軟體控制PWM時序與輸出信號，最沒有效率的寫法，也沒有善加利用硬體資源（硬體所提供的功能）</p>
+<p>The <span><i>Servo</i> Control</span> generally need a signal every 20ms and the high pulse should be 
+between 1ms and 2ms. If our repeating frequency is every 20ms then an 9 
+bit timer (having 512 increments) would mean each increment would 
+represent 20.48ms/512 or 0.04ms. However: most of the 20.48ms is dormant and 
+all we have to play with is the pulse duration between 1ms and 2ms and 
+we can only break this down into 1/0.04 or 25 steps. So an 9 bit 
+timer would only give us 25 independent positions for a normal servo. 
+Most servos (subject to make and model) have around 90 possible steps - 
+so only being able to access 25 of them isn't making the most of the 
+servo - although it may(?) be enough for your particular purpose. Using a
+ 16 bit timer would give a timer granularity of 20ms/65536 or 0.0003ms 
+and so for the 1ms to 2ms pulse width would give 3,276 individual steps.
+ So this is overkill but at least we can make the most of the abilities 
+of the servo. Also: the 16 bit Timers allow us to precisely set the 
+value of TOP in order to generate an exact 20ms signal.</p>
+</div>
+</div>
+<!--  -->
+
+</body></html>
