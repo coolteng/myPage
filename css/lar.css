@@ -1,0 +1,34 @@
+H1 {
+	FONT-FAMILY: Microsoft Sans Serif, sans-serif
+}
+H2 {
+	FONT-FAMILY: Microsoft Sans Serif, sans-serif
+}
+
+H3 {
+	font-family: Tahoma, Arial, Geneva, sans-serif;
+	padding-left: 0.3em;
+                border-left: 1em solid #ff3300;
+                border-bottom: 1px solid #ff3300;
+}
+H4 {
+	MARGIN-TOP: 0px; FONT-FAMILY: Microsoft Sans Serif, sans-serif; MARGIN-BOTTOM: 0px
+}
+H5 {
+	MARGIN-TOP: 0px; FONT-FAMILY: Microsoft Sans Serif, sans-serif; MARGIN-BOTTOM: 0px
+}
+.disclaimer {
+	FONT-FAMILY: 'Microsoft Sans Serif', sans-serif; FONT-SIZE: xx-small
+}
+BODY {
+	FONT-FAMILY: Microsoft Sans Serif, sans-serif; BACKGROUND: white; COLOR: black; FONT-SIZE: 8pt
+}
+P {
+	FONT-FAMILY: Microsoft Sans Serif, sans-serif; FONT-SIZE: 12pt
+}
+.normal {
+	FONT-FAMILY: Microsoft Sans Serif, sans-serif; FONT-SIZE: 8pt
+}
+.writing {
+	FONT-FAMILY: Microsoft Sans Serif, sans-serif; FONT-SIZE: 10pt
+}
