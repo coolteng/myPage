@@ -17,16 +17,66 @@ setUpRecord
   * 2.4.1.URL：https://coolteng.github.io/
   * 2.4.2.URL：http://robotics.ee.uwa.edu.au
 * 2.5.按一下【確定】按鈕以儲存您輸入的 URL，如下圖所示。如果按一下【取消】按鈕，則不會儲存 URL。
+
+
+----
+
+## Examples :boom:
+### Here is a first demo:
 ![ghSetting01](擷取git01Fork.PNG "")
 * 2.6.按一下前述「安全性警告」對話方塊中的【繼續】按鈕。
+
+----
+
+### [This page](//lbesson.bitbucket.io/md/index.html) explains how to use StrapDown.js:
 ![ghSetting02](擷取git02Fork完成.PNG "")
+
+----
+
+### AAA
 ![ghSetting03](擷取git03查他人repo的屬性.PNG "")
+
+----
+
+### BBB
 ![ghSetting04](擷取git04查自己名下已Fork所得repo的屬性.PNG "")
+
+----
+
+### CCC
 ![ghSetting05](擷取git05查他人io沒有子目錄.PNG "")
-![ghSetting06](https://coolteng.github.io/myPage/setupdoc/擷取git06查自己名下io有不少自建的子目錄.PNG "")
-![ghSetting07](https://coolteng.github.io/myPage/setupdoc/擷取git07刪除自己名下io.PNG "")
-![ghSetting08](https://coolteng.github.io/myPage/setupdoc/擷取git08調整js之paras.json後查Overview.PNG.PNG "") "")
-![ghSetting09](https://coolteng.github.io/myPage/setupdoc/擷取git09查他人js之verview有非常不同的勾勾.PNG "")
+
+----
+
+### DDD
+![ghSetting06](擷取git06查自己名下io有不少自建的子目錄.PNG "")
+
+----
+
+### EEE
+![ghSetting07](擷取git07刪除自己名下io.PNG "")
+
+----
+
+### FFF
+![ghSetting08](擷取git08調整js之paras.json後查Overview.PNG.PNG "")
+
+----
+
+### GGG
+![ghSetting09](擷取git09查他人js之verview有非常不同的勾勾.PNG "")
+
+----
+
+### HHH
 ![ghSetting10](擷取git10只有README.md下有設定theme則master分歧會有好事發生.PNG "")
+
+----
+
+### III
 ![ghSetting11](擷取git11只有README.md下有設定theme的頭一次瀏覽畫面.PNG "")
-![ghSetting12](https://coolteng.github.io/myPage/setupdoc/擷取git12成功上傳index.html檔的GitHub畫面.PNG "")
+
+----
+
+### JJJ
+![ghSetting12](擷取git12成功上傳index.html檔的GitHub畫面.PNG "")
