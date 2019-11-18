@@ -59,7 +59,7 @@ setUpRecord
 ----
 
 ### FFF
-![ghSetting08](擷取git08調整js之paras.json後查Overview.PNG.PNG "")
+![ghSetting08](擷取git08調整js之paras.json後查Overview.PNG "")
 
 ----
 
