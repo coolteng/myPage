@@ -2,7 +2,6 @@ setUpRecord
 ===========
 
 ### 設定例外網站清單
-![IEsetting](https://coolteng.github.io/myPage/gif/JavaSafedUrlSetting.PNG "")
 
 - [設定例外網站清單說明](https://www.java.com/zh_TW/download/faq/exception_sitelist.xml)
 - 從 Java 7 Update 11 版開始，Java 已經預設在高安全性設定中封鎖自行簽署和未簽署的 Applet 應用程式
@@ -18,5 +17,16 @@ setUpRecord
   * 2.4.1.URL：https://coolteng.github.io/
   * 2.4.2.URL：http://robotics.ee.uwa.edu.au
 * 2.5.按一下【確定】按鈕以儲存您輸入的 URL，如下圖所示。如果按一下【取消】按鈕，則不會儲存 URL。
-![ghSetting](https://coolteng.github.io/myPage/setupdoc/擷取git01Fork.PNG "")
+![ghSetting01](擷取git01Fork.PNG "")
 * 2.6.按一下前述「安全性警告」對話方塊中的【繼續】按鈕。
+![ghSetting02](擷取git02Fork完成.PNG "")
+![ghSetting03](擷取git03查他人repo的屬性.PNG "")
+![ghSetting04](擷取git04查自己名下已Fork所得repo的屬性.PNG "")
+![ghSetting05](擷取git05查他人io沒有子目錄.PNG "")
+![ghSetting06](https://coolteng.github.io/myPage/setupdoc/擷取git06查自己名下io有不少自建的子目錄.PNG "")
+![ghSetting07](https://coolteng.github.io/myPage/setupdoc/擷取git07刪除自己名下io.PNG "")
+![ghSetting08](https://coolteng.github.io/myPage/setupdoc/擷取git08調整js之paras.json後查Overview.PNG.PNG "") "")
+![ghSetting09](https://coolteng.github.io/myPage/setupdoc/擷取git09查他人js之verview有非常不同的勾勾.PNG "")
+![ghSetting10](擷取git10只有README.md下有設定theme則master分歧會有好事發生.PNG "")
+![ghSetting11](擷取git11只有README.md下有設定theme的頭一次瀏覽畫面.PNG "")
+![ghSetting12](https://coolteng.github.io/myPage/setupdoc/擷取git12成功上傳index.html檔的GitHub畫面.PNG "")
