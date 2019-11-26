@@ -20,9 +20,9 @@
 .page-header {
     background: #2c2c2c;
     border-bottom: #3a3a3a 1px solid;
-    padding-top: 0px;
+    padding-top: 33px;
 }
-/* 若改設定 padding: 0px 0; 會導致ICO圖與後續超連結文字錯開一行*/
+/* ?? 若改設定 padding: 0px 0; 會導致ICO圖與後續超連結文字錯開一行?? */
 .page-header__container {
     padding: 22px 0;
 }
@@ -58,7 +58,14 @@ a {
     color: #dd4814;
     text-decoration: none;
 }
- </style>
+a:focus, a:hover {
+    color: #97310e;
+    text-decoration: underline;
+}
+a:active, a:hover {
+    outline: 0;
+}
+</style>
 <title>互動式機械臂示範教材展示輔助說明</title>
 </HEAD>
 <body style="">
