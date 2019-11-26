@@ -4,8 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="shortcut icon" href="myPage/gif/armbotLogo.ico" type="image/x-icon" />
 <link rel="stylesheet" href="https://cdn.rawgit.com/Naereen/StrapDown.js/master/strapdown.min.css">
-<link rel="stylesheet" href="https://cdn.rawgit.com/Naereen/StrapDown.js/master/themes/united.min.css">
 <style>
+@media (min-width: 1200px)
+.container {
+    width: 1170px;
+    margin-right: auto;
+    margin-left: auto;
+    font-size: 140%;
+}
+ 
 .top-wrapper {
     min-height: 100%;
     margin-bottom: -99px;
@@ -44,7 +51,7 @@
             <h1 class="page-header__title"><a href="/teng" target="_blank" title="崇林的五指搧(山)入口網站">
 <img src="/teng/carouselMenu/css/coolteng含框64.png" border="0" />👉《機械手臂展示說明》</a></h1>
             <h2 class="page-header__subtitle">
-如果只會羨慕他人機械手臂技術好，那就只能羨慕一輩子。只要跳下來從基礎開始學起，尤其是其背後的運動學，就能撥雲見日。</h2>
+如果只會羨慕他人機械手臂技術好，那就只能羨慕一輩子；只要跳下來從基礎開始學起，尤其是其背後的運動學，就能撥雲見日。</h2>
         </div>
     </div>
 </header>
@@ -68,26 +75,35 @@
 <li>支持線上互動學習機械手臂其背後的正向運動學（Forward Kinematics），以及逆向運動學（Inverse Kinematics）。</li>
 </ol>
 <hr>
-<h2>🏁 目錄</h2>
+<h2 id="clteng0">🏁 目錄</h2>
 <ul>
 <li><a href="#clteng1">👍建置本網站的用意</a></li>
-<li><a href="#clteng2">👍線上驗證 Java 版本</a></li>
+<li><a href="#clteng2">👍互動需IE與JAVA的環境設定</a></li>
 <li><a href="#clteng3">👍設定例外網站清單</a></li>
 <li><a href="#clteng4">👍機械臂互動式示範教學</a></li>
 <li><a href="#clteng5">👍機械臂互動式示範內容概要</a></li>
 </ul>
 <hr>
-<h3 id="clteng2">👍線上驗證 Java 版本</h3> 
-
+<h3 id="clteng2">👍互動需IE與JAVA的環境設定</h3>
+<li><p>[線上驗證 Java 版本]</p>
 <ul>
-<li>Oracle's <a href="https://java.com/zh_TW/download/installed8.jsp">線上驗證 Java 版本</a></li>
+ <li>Oracle's <a href="https://java.com/zh_TW/download/installed8.jsp">線上驗證 Java 版本</a></li>
 <li>由於Chrome 及Edge 瀏覽器不支援 NPAPI 外掛程式，因此將不會執行所有 Java 內容。請切換為其他瀏覽器 (Internet Explorer 或是 Safari (Mac)) 以執行 Java 外掛程式。</li>
 <li>若本地機器無 Java執行環境，也請先安裝 Java。</li>
 </ul>
-<hr>
+<ul>
+<li><a href="https://www.java.com/zh_TW/download/help/windows_manual_download.xml"
+    target="_blank">如何手動下載及安裝適用於 Windows 電腦的 Java？</a></li>
+<li>只要裝有Java環境，並不需要直接啟動它，只需要進一步設定例外網站清即可。</li>
+</ul>
+</li>
+
+ <hr>
 <h3 id="clteng3">👍設定例外網站清單</h3> 
 
 <ul>
+<li><a href="https://www.java.com/zh_TW/download/faq/exception_sitelist.xml" target="_blank">
+ 如何設定例外網站清單？</a></li>
 <li><a href="https://www.java.com/zh_TW/download/faq/exception_sitelist.xml">設定例外網站清單說明</a></li>
 <li>從 Java 7 Update 11 版開始，Java 已經預設在高安全性設定中封鎖自行簽署和未簽署的 Applet 應用程式</li>
 <li>從 Java 7 Update 51 版本開始導入了例外網站清單功能</li>
@@ -121,7 +137,7 @@
 <li>機械臂互動式示範教學，開啟 Internet Explorer 瀏覽器並輸入網址：<a href="http://arm.cool.nctu.me/">http://arm.cool.nctu.me/</a></li>
 <li><p>成功開啟後的畫面如下圖所示(會與瀏覽器不同而有差異)，若點擊畫面左下角大拇指選項，也能線上閱讀說明：</p>
 <blockquote>
-<p><img src="http://arm.cool.nctu.me/myPage/armMenu/擷取m00.PNG" alt="clt02"></p>
+<p><img src="http://arm.cool.nctu.me/myPage/armMenu/擷取機械臂畫面.PNG" alt="clt02"></p>
 </blockquote>
 </li>
 <li><p>如用微軟 Edge 瀏覽器時，請依下圖切換成 IE 瀏覽器：</p>
@@ -340,14 +356,14 @@
 </tr>
 </tbody>
 </table>
-<p> <a href="#clteng5">回單元</a></p>
+<p> <a href="#clteng5">回單元</a>&nbsp;&nbsp;<a href="clteng0">🏁 目錄</a></p>
 <hr>
 <p></p><h3 id="arm11">機械手臂有探險：助人進行危險環境探索示範</h3><p></p>
 <blockquote>
 <p><img src="http://arm.cool.nctu.me/myPage/armMenu/擷取m11.PNG" alt="arm11"></p>
 </blockquote>
 <ul>
-<li><a href="#clteng5">回單元</a></li>
+<li><a href="#clteng5">回單元</a>&nbsp;&nbsp;<a href="clteng0">🏁 目錄</a></li>
 </ul>
 <hr>
 <p></p><h3 id="arm12">機械手臂有頭腦：與人進行井字遊戲下棋示範</h3><p></p>
@@ -610,7 +626,7 @@
 <p><img src="http://arm.cool.nctu.me/myPage/armMenu/擷取m55.PNG" alt="arm55"></p>
 </blockquote>
 <ul>
-<li><a href="#clteng5">回單元</a></li>
+ <li><a href="#clteng5">回單元</a>&nbsp;&nbsp;<a href="clteng0">🏁 目錄</a></li>
 </ul>
 <hr>
 </div>
