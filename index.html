@@ -31,10 +31,8 @@
 .page-header__title {
     margin: 0;
     color: #eee;
-    display: inline-block;
-    height: 100%;
-    vertical-align: bottom;
-    width: 0px;
+    float: left; /* 如果設定廣告放在左邊，請修改為 float: right; */
+    clear: both;
 }
 .page-header__subtitle {
     font-weight: 400;
@@ -75,11 +73,9 @@ a:active, a:hover {
 <header class="page-header">
     <div id="armdoc-header" class="page-header__container">
         <div class="center-container">
-            <div class="page-header__title">
-<span><a href="/teng" target="_blank" title="崇林的五址搧(五指山)入口網站">
- <img src="/teng/carouselMenu/css/coolteng含框64.png" border="0" /></a></span>
-<h1>👉《機械手臂展示說明》</h1>
-            </div> 
+            <h1 class="page-header__title">
+<a href="/teng" target="_blank" title="崇林的五址搧(五指山)入口網站">
+ <img src="/teng/carouselMenu/css/coolteng含框64.png" border="0" /></a>👉《機械手臂展示說明》</h1>
             <h2 class="page-header__subtitle">
 如果只會羨慕他人機械手臂技術好，那就只能羨慕一輩子；只要跳下來從基礎開始學起，尤其是其背後的運動學，就能撥雲見日。</h2>
         </div>
